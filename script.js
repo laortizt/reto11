@@ -1,35 +1,22 @@
-const jokeEl = document.('')
-const jokeBtn = document.('')
+const jokeEl = document.getElementById('joke') //se agrega getElement y joke
+const jokeBtn = document.getElementById('jokeBtn') //se agrega getElement y jokeBtn
 
-jokeBtn.addEventListener('', generateJoke)
+jokeBtn.addEventListener('click', generateJoke) //se agrega click
+
+generateJoke()
 
 // USING ASYNC/AWAIT
 async function generateJoke() {
   const config = {
     headers: {
-      Accept: '',
+      Accept: 'application/json',
     },
   }
 
-  const res = await ('', config)
+  const res = await fetch('https://icanhazdadjoke.com', config)
 
   const data = await res.json()
 
   jokeEl.innerHTML = data.joke
 }
 
-//   HINTS
-// USING .then()
-// function generateJoke() {
-//   const config = {
-//     headers: {
-//       Accept: 'application/json',
-//     },
-//   }
-
-//   >>fetch('https://icanhazdadjoke.com', config)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       jokeEl.innerHTML = data.joke
-//     })
-// }
